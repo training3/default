@@ -42,7 +42,6 @@ spec:
       }
       steps {
         container(name: 'kaniko', shell: '/busybox/sh') {
-          """
           sh '''#!/busybox/sh
             /kaniko/executor --context `pwd` --verbosity debug --destination buvan/latest-jenkins-debug
           '''
