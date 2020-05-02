@@ -31,6 +31,11 @@ spec:
     }
   }
   stages {
+    stage('List files'){
+      steps{
+       sh 'ls -l'
+      }
+    }
     stage('Build with Kaniko') {
       environment {
         PATH = "/busybox:/kaniko:$PATH"
