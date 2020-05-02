@@ -10,11 +10,11 @@ metadata:
 labels:
   component: ci
 spec:
-  serviceAccountName: cd-jenkins
+  serviceAccountName: jenkins
   containers:
   - name: app
     image: buvan/git
-    command: ["/bin/sh","-c","cd /data && git clone https://github.com/bksivasub-egov-macroskies/myApp.git && cat"]
+    command: ["/bin/sh","-c","cd /data && git clone https://github.com/training3/default.git && cat"]
     tty: true
     volumeMounts:
       - name: shared-volume
@@ -22,8 +22,8 @@ spec:
 
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=/data/myApp/Dockerfile",
-            "--context=/data/myApp",
+    args: ["--dockerfile=/data/default/Dockerfile",
+            "--context=/data/default",
             "--destination=buvan/hiya"]
     volumeMounts:
       - name: kaniko-secret
